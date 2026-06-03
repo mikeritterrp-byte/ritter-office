@@ -412,6 +412,38 @@
             cursor: not-allowed;
         }
 
+        /* STATUS MECENASA */
+        .lawyer-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 8px 18px;
+            border-radius: 50px;
+            border: 1px solid var(--border);
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        /* Kolor gdy dostępny */
+        .dot-online {
+            background-color: #10b981;
+            box-shadow: 0 0 10px #10b981;
+        }
+        /* Kolor gdy niedostępny */
+        .dot-offline {
+            background-color: #ef4444;
+            box-shadow: 0 0 10px #ef4444;
+        }
+
         /* --- STOPKA --- */
         footer {
             text-align: center;
@@ -442,6 +474,22 @@
     <!-- NAGŁÓWEK HERO Z LOGO -->
     <header class="hero">
         <img src="Black and Gold Modern Illustrative Law Firm Logo.png" alt="Mike Ritter Law Office Logo" class="hero-logo">
+        <header class="hero">
+        <img src="Black and Gold Modern Illustrative Law Firm Logo.png" alt="Mike Ritter Law Office Logo" class="hero-logo">
+        
+        <!-- TUTAJ JEST TWÓJ STATUS W GRZE -->
+        <div>
+            <div class="lawyer-status">
+                <span class="status-dot dot-offline"></span>
+                <span style="color: #fff;">Status: <span style="color: #ef4444;">Niedostępny w mieście</span></span>
+            </div>
+        </div>
+        <!-- KONIEC STATUSU -->
+
+        <h1>LAW OFFICE OF MIKE RITTER</h1>
+        <p>Criminal Defense & Corporate Counsel in Los Santos</p>
+        <a href="#contact" class="btn" style="width: auto;">Zgłoś Sprawę Online</a>
+    </header>
         <h1>LAW OFFICE OF MIKE RITTER</h1>
         <p>Criminal Defense & Corporate Counsel in Los Santos</p>
         <a href="#contact" class="btn" style="width: auto;">Zgłoś Sprawę Online</a>
@@ -464,8 +512,7 @@
         </section>
 
         <!-- KAFELKI Z USŁUGAMI -->
-        <section id="services">
-            <h2 class="section-title">Zakres Usług</h2>
+
             <!-- KAFELKI Z USŁUGAMI -->
         <section id="services">
             <h2 class="section-title">Zakres Usług Kancelarii</h2>
