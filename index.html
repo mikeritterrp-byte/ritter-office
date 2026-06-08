@@ -513,12 +513,49 @@
         <img src="Black and Gold Modern Illustrative Law Firm Logo.png" alt="Mike Ritter Law Office Logo" class="hero-logo">
         
         <!-- TUTAJ JEST TWÓJ STATUS W GRZE -->
+        <!-- DYNAMICZNY STATUS Z DISCORDA -->
         <div>
             <div class="lawyer-status">
-                <span class="status-dot dot-offline"></span>
-                <span style="color: #fff;">Status: <span style="color: #ef4444;">Poza biurem</span></span>
+                <span id="lawyer-dot" class="status-dot dot-offline"></span>
+                <span style="color: #fff;">Status: <span id="lawyer-text" style="color: #ef4444;">Wczytywanie...</span></span>
             </div>
         </div>
+
+        <script>
+            // Adres URL do Twojego pliku status.txt na GitHub Pages
+            const statusUrl = "https://mikeritter-byte.github.io/ritter-office/status.txt";
+
+            function checkLiveStatus() {
+                // Dodajemy timestamp (?t=...), aby oszukać pamięć przeglądarki i zawsze pobierać najnowszy status
+                fetch(statusUrl + "?t=" + new Date().getTime())
+                    .then(response => response.text())
+                    .then(responseText => {
+                        const status = responseText.trim().toLowerCase();
+                        const dot = document.getElementById('lawyer-dot');
+                        const text = document.getElementById('lawyer-text');
+
+                        if (status === 'online') {
+                            dot.className = 'status-dot dot-online';
+                            text.innerText = 'Dostępny w mieście';
+                            text.style.color = '#10b981';
+                        } else {
+                            dot.className = 'status-dot dot-offline';
+                            text.innerText = 'Poza biurem';
+                            text.style.color = '#ef4444';
+                        }
+                    })
+                    .catch(err => {
+                        console.log('Błąd odczytu statusu:', err);
+                        document.getElementById('lawyer-text').innerText = 'Kontakt przez formularz';
+                    });
+            }
+
+            // Sprawdź status od razu po wejściu na stronę
+            checkLiveStatus();
+            // Odświeżaj automatycznie co 30 sekund bez przeładowania strony
+            setInterval(checkLiveStatus, 30000);
+        </script>
+        <!-- KONIEC STATUSU -->
         <!-- KONIEC STATUSU -->
         
         <h1>LAW OFFICE OF MIKE RITTER</h1>
